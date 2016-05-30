@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">iNews</string>
+    <string name="edit_message">Write here....</string>
+    <string name="button_send">Send</string>
+    <string name="title_activity_disp_msg">My message</string>
+    <string name="title_activity_category">iNews</string>
+
+    <string name="b1">Политика</string>
+    <string name="b2">В мире</string>
+    <string name="b3">Общество</string>
+    <string name="b4">Экономика</string>
+    <string name="b5">Спорт</string>
+    <string name="b6">Происшествия</string>
+    <string name="b7">Культура</string>
+
+    <string name="link1">google</string>
+</resources>
