@@ -17,7 +17,7 @@
 
         </activity>
 
-        <activity android:name="com.example.nursul.myapplication.CheckActivity">
+        <activity android:name=".StartActivity">
             <intent-filter>  <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" /> </intent-filter>

@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-<android.support.v7.widget.CardView
 
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:card_view="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:orientation="horizontal">
-
-card_view:cardCornerRadius="5dp"
-card_view:cardUseCompatPadding="true"
--->
 <android.support.v7.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -30,15 +19,14 @@ card_view:cardUseCompatPadding="true"
             android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="3dp"
             android:layout_marginLeft="5dp"
             android:text="Name"
             android:textColor="@android:color/black"
+            android:textStyle="bold"
             android:textSize="10sp" />
-
         <TextView
-            android:id="@+id/tvEmailId"
+            android:id="@+id/tvDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvName"
@@ -47,8 +35,25 @@ card_view:cardUseCompatPadding="true"
             android:text="Email Id"
             android:textColor="@android:color/black"
             android:textSize="8sp" />
+         <TextView
+            android:id="@+id/tvFeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDate"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="5dp"
+        android:text="Email Id"
+        android:textColor="@android:color/black"
+        android:textSize="8sp" />
+        <TextView
+            android:id="@+id/tvDesc"
+            android:layout_width="match_parent"
+            android:layout_height="55px"
+            android:layout_below="@+id/tvFeed"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="5dp"
+            android:text="Email Id"
+            android:textColor="@android:color/black"
+            android:textSize="8sp" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>
-<!--
-</android.support.v7.widget.CardView>
-    -->

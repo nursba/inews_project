@@ -21,7 +21,7 @@ import java.util.List;
 public class DataAdapter extends RecyclerView.Adapter {
     private final int VIEW_ITEM = 1;
     private final int VIEW_PROG = 0;
-    private List<Student> studentList;
+    private List<NewsBean> newsList;
     // The minimum amount of items to have below your current scroll position
     // before loading more.
     private int visibleThreshold = 5;
@@ -32,8 +32,8 @@ public class DataAdapter extends RecyclerView.Adapter {
     private  static  Context context;
 
 
-    public DataAdapter(List<Student> students, RecyclerView recyclerView,Context context) {
-       this.studentList = students;
+    public DataAdapter(List<NewsBean> students, RecyclerView recyclerView, Context context) {
+       this.newsList = students;
        this.context = context ;
 
         if (recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
@@ -61,7 +61,7 @@ public class DataAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        return studentList.get(position) != null ? VIEW_ITEM : VIEW_PROG;
+        return newsList.get(position) != null ? VIEW_ITEM : VIEW_PROG;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class DataAdapter extends RecyclerView.Adapter {
         RecyclerView.ViewHolder vh;
         if (viewType == VIEW_ITEM) {
             View v = LayoutInflater.from(parent.getContext()) .inflate(R.layout.list_row, parent, false);
-            vh = new StudentViewHolder(v);
+            vh = new NewsViewHolder(v);
 
         } else {
             View v = LayoutInflater.from(parent.getContext()) .inflate(R.layout.progress_item, parent, false);
@@ -80,12 +80,14 @@ public class DataAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof StudentViewHolder) {
-            Student singleStudent= (Student) studentList.get(position);
-            ((StudentViewHolder) holder).tvName.setText(singleStudent.getName());
-            ((StudentViewHolder) holder).tvEmailId.setText(singleStudent.getEmailId());
-            ((StudentViewHolder) holder).student= singleStudent;
-            Linkify.addLinks(((StudentViewHolder) holder).tvEmailId,Linkify.WEB_URLS);
+        if (holder instanceof NewsViewHolder) {
+            NewsBean singleStudent= (NewsBean) newsList.get(position);
+            ((NewsViewHolder) holder).tvName.setText(singleStudent.getName());
+            ((NewsViewHolder) holder).tvDesc.setText(singleStudent.getDescription());
+            ((NewsViewHolder) holder).tvDate.setText("Дата: "+singleStudent.getDate());
+            ((NewsViewHolder) holder).tvFeed.setText(singleStudent.getFeed());
+
+            //Linkify.addLinks(((StudentViewHolder) holder).tvDesc,Linkify.WEB_URLS);
 
         } else {
             ((ProgressViewHolder) holder).progressBar.setIndeterminate(true);
@@ -98,7 +100,7 @@ public class DataAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return studentList.size();
+        return newsList.size();
     }
 
     public void setOnLoadMoreListener(OnLoadMoreListener onLoadMoreListener) {
@@ -107,23 +109,26 @@ public class DataAdapter extends RecyclerView.Adapter {
 
 
     //
-    public static class StudentViewHolder extends RecyclerView.ViewHolder {
+    public static class NewsViewHolder extends RecyclerView.ViewHolder {
         public TextView tvName;
-        public TextView tvEmailId;
-        public Student student;
+        public TextView tvDesc;
+        public TextView tvDate;
+        public TextView tvFeed;
+        public NewsBean newsBean;
 
-        public StudentViewHolder(View v) {
+        public NewsViewHolder(View v) {
             super(v);
             tvName = (TextView) v.findViewById(R.id.tvName);
-            tvEmailId = (TextView) v.findViewById(R.id.tvEmailId);
+            tvDesc = (TextView) v.findViewById(R.id.tvDesc);
+            tvDate = (TextView) v.findViewById(R.id.tvDate);
+            tvFeed = (TextView) v.findViewById(R.id.tvFeed);
 
             v.setOnClickListener(new OnClickListener() {
 
                 @Override
                 public void onClick(View v) {
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(tvEmailId.getText().toString()));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(tvFeed.getText().toString()));
                     context.startActivity(browserIntent);
-
 
                 }
             });
